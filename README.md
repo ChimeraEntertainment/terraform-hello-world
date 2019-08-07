@@ -10,3 +10,8 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+## Cleanup
+```
+terraform destroy
+```
