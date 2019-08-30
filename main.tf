@@ -1,5 +1,7 @@
 provider "aws" {
   region     = "us-east-2"
+  access_key = ""
+  secret_key = ""
 }
 
 /* Creates a VPC and 2 subnets */
@@ -12,6 +14,7 @@ module "networking" {
   sbn_cidr_1          = "10.10.1.0/24"
   sbn_cidr_2          = "10.10.2.0/24"
   ssh_key_name        = "demo-key"
+  ssh_public_key      = ""
 }
 
 /* Creates Security Groups to Allow traffic */
@@ -19,6 +22,8 @@ module "security_groups" {
   source         = "./security_groups"
   prefix_tag     = "demo"
   vpc_id         = "${module.networking.vpc_id}"
+  # Replace with your public IP in cidr notation x.x.x.x/32
+  workstation_ip = ""
 }
 
 /* Creates a server with static IP */
